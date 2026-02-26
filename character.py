@@ -1,3 +1,4 @@
+from database import create_table, add_character
 import random
 import narrator
 
@@ -44,10 +45,24 @@ class Character:
 
 def Create_Hero():
     name = input("Введит имя персонажа: ")
+    hp = input("Введите количество здоровья: ")
     attack = input("Введите урон от атакаи персонажа: ")
     armor = input("Введите количество защиты персонажа: ")
     dodge = input("Введите вероятность уклонения персонажа: ")
     crit = input("Введите шанс критического урона: ")
     initiative = input("Введите значение инициативы: ")
+
+    hero = Character(
+        name= name,
+        hp=hp,
+        attack=attack,
+        armor=armor,
+        dodge=dodge,
+        crit=crit,
+        initiative = initiative
+    )   
+
+    create_table()
+    add_character(hero)
 
 

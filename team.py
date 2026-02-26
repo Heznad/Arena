@@ -17,3 +17,10 @@ class Team:
         for c in self.characters:
             c.info()
             print(f"Инициатива: {c.initiative}")
+
+def Create_Team(characters = []):
+    name = input("Введите название команды:")
+    team = Team(
+        name= name,
+        characters = characters
+    )

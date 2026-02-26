@@ -1,4 +1,6 @@
-from character import Character
+from character import Character, Create_Hero
+from database import get_all_characters
+from generate_deafault_characters import create_deault_characters
 from team import Team
 from fight import Fight
 import narrator
@@ -13,6 +15,39 @@ while comand != 0:
           "2. Бой 3 а 3\n"+
           "3. Создание персонажа\n"+
           "0. Выход")
+    comand = input("Введите команду: ")
+    if comand == '1':
+        pull_heroes = get_all_characters()
+        if len(pull_heroes) >= 2:
+            list_heroes = []
+            for _ in pull_heroes:
+                
+                hero = Character(
+                    name=_[1],
+                    hp=_[2],
+                    attack=_[3],
+                    armor=_[4],
+                    dodge=_[5],
+                    crit=_[6],
+                    initiative=_[7]
+                )
+                list_heroes.append(hero)
+
+            i = 1
+            for hero in list_heroes:
+                print(i)
+                print(hero.name, hero.)
+        else:
+            print("Не хватает героев для боя!")
+    elif comand == '2':
+        pull_heroes = get_all_characters()
+        print(pull_heroes)
+    elif comand == '3':
+        Create_Hero()
+    elif comand == '0':
+        exit()
+    else:
+        print("Введена некорректная команда")
 
 
 gladiator1 = Character(
