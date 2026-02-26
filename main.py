@@ -1,8 +1,19 @@
 from character import Character
 from team import Team
 from fight import Fight
+import narrator
 import random
 import time
+
+comand = 10
+
+while comand != 0:
+    narrator.HelloWorld()
+    print("1. Бой 1 на 1\n"+
+          "2. Бой 3 а 3\n"+
+          "3. Создание персонажа\n"+
+          "0. Выход")
+
 
 gladiator1 = Character(
     name="Бронзовый гладиатор 1",
@@ -88,6 +99,6 @@ while not team_Gladiators.is_defeated() and not team_Assassins.is_defeated():
     
 
 if team_Gladiators.is_defeated():
-    print("Победил", team_Gladiators.name)
+    narrator.EndFight(team_Gladiators.name)
 else:
-    print("Победил", team_Assassins.name)
+    narrator.EndFight(team_Assassins.name)

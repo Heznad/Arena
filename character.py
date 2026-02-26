@@ -1,4 +1,5 @@
 import random
+import narrator
 
 class Character:
     def __init__(self, name, hp, attack, armor, dodge, crit, initiative):
@@ -25,7 +26,7 @@ class Character:
 
     def attack_enemy(self, enemy):
         if random.randint(1, 100) <= enemy.dodge:
-            print(enemy.name, "уклонился!")
+            narrator.Dodge(self, enemy)
             return
 
         base = random.randint(int(self.attack - self.attack*0.1), int(self.attack + self.attack*0.1))
@@ -33,15 +34,20 @@ class Character:
         if random.randint(1, 100) <= self.crit:
             mult = random.randint(100, 200) / 100
             base = int(base * mult)
-            print(self.name, "наносит крит!")
+            narrator.Crit(self,enemy)
 
         dealt = enemy.take_damage(base)
-        print(self.name, "наносит", dealt, "урона", enemy.name)
-
-
+        narrator.Attack(self, dealt, enemy)
 
     def info(self):
-        print(self.name, "HP:", self.hp, "/", self.max_hp)
+        narrator.Health(self)
 
+def Create_Hero():
+    name = input("Введит имя персонажа: ")
+    attack = input("Введите урон от атакаи персонажа: ")
+    armor = input("Введите количество защиты персонажа: ")
+    dodge = input("Введите вероятность уклонения персонажа: ")
+    crit = input("Введите шанс критического урона: ")
+    initiative = input("Введите значение инициативы: ")
 
 

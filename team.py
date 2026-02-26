@@ -15,5 +15,5 @@ class Team:
     def info(self):
         print(self.name)
         for c in self.characters:
-            print(c.name, "HP:", c.hp, "/", c.max_hp)
+            c.info()
             print(f"Инициатива: {c.initiative}")
